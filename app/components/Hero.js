@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react'
 
 export default function Hero() {
   const name = 'Pranit Adhangle'
-  const suffix = ' – Portfolio'
-  const fullPhrase = `${name}${suffix}`
+  const prefix = "Hi, I'm "
+  const fullPhrase = `${prefix}${name}`
   const [typedText, setTypedText] = useState('')
 
   useEffect(() => {
@@ -47,11 +47,12 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text">
-                {typedText.slice(0, Math.min(typedText.length, name.length))}
-              </span>
-              <span>
-                {typedText.length > name.length ? typedText.slice(name.length) : ''}
+              <span className="sr-only">Pranit Adhangle – Portfolio</span>
+              <span aria-hidden="true">
+                <span>{typedText.slice(0, Math.min(typedText.length, prefix.length))}</span>
+                <span className="bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text">
+                  {typedText.length > prefix.length ? typedText.slice(prefix.length) : ''}
+                </span>
               </span>
             </motion.h1>
             
@@ -152,10 +153,13 @@ export default function Hero() {
               whileHover={{ scale: 1.05, rotate: 5 }}
               transition={{ duration: 0.3 }}
             >
-              <img 
-                src="/pranit.jpg" 
+              <Image
+                src="/pranit.jpg"
                 alt="Pranit Adhangle"
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 768px) 256px, 384px"
+                className="object-cover"
+                priority
               />
             </motion.div>
           </motion.div>

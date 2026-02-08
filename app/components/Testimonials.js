@@ -117,7 +117,7 @@ export default function Testimonials({ limit = 3, showViewAllLink = true }) {
                     <FaQuoteLeft className="text-4xl text-purple-400 opacity-30" />
                   </div>
                   <p className="text-gray-300 mb-6 leading-relaxed italic">
-                    "{testimonial.message}"
+                    &ldquo;{testimonial.message}&rdquo;
                   </p>
                   <div className="flex items-center space-x-1 mb-4">
                     {[...Array(5)].map((_, i) => (

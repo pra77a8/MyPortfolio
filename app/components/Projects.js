@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
@@ -62,11 +63,12 @@ export default function Projects({ limit = 2, showViewAllLink = true }) {
             >
               {/* Live Preview */}
               <div className="relative h-56 sm:h-60 md:h-64 overflow-hidden bg-black/20">
-                <img
+                <Image
                   src={project.image}
                   alt={`${project.title} preview`}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
                 />
                 <a
                   href={project.live}

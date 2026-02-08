@@ -33,8 +33,8 @@ export default function Contact() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            I'm always interested in hearing about new projects and opportunities. 
-            Let's create something amazing together!
+            I&apos;m always interested in hearing about new projects and opportunities. 
+            Let&apos;s create something amazing together!
           </motion.p>
           
           <motion.a 
