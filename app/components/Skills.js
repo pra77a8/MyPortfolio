@@ -35,6 +35,7 @@ export default function Skills() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.6 }}
         >
+          <span className="sr-only">Skills</span>
           <span className="bg-gradient-to-r from-purple-600 to-blue-500 text-transparent bg-clip-text">
             Tech Stack
           </span>

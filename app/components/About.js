@@ -31,7 +31,7 @@ export default function About() {
             className="space-y-6"
           >
             <p className="text-lg text-gray-600 leading-relaxed">
-              I am a passionate{" "}
+              I am Pranit Adhangle, a passionate{" "}
               <span className="font-semibold text-gray-900">
                 Computer Engineering student
               </span>{" "}

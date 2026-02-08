@@ -9,7 +9,7 @@ export default function Contact() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-br from-[#0b1120] via-[#0f172a] to-[#1e293b] relative overflow-hidden" ref={ref}>
+    <footer id="contact" className="py-24 bg-gradient-to-br from-[#0b1120] via-[#0f172a] to-[#1e293b] relative overflow-hidden" ref={ref}>
       {/* Animated glow blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-1/2 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
@@ -24,6 +24,7 @@ export default function Contact() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.6 }}
           >
+            <span className="sr-only">Contact</span>
             Ready to Work Together?
           </motion.h2>
           <motion.p 
@@ -64,6 +65,6 @@ export default function Contact() {
           </p>
         </motion.div>
       </div>
-    </section>
+    </footer>
   )
 }

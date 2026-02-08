@@ -105,7 +105,7 @@ export default function Testimonials({ limit = 3, showViewAllLink = true }) {
           ) : testimonials.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {visibleTestimonials.map((testimonial, idx) => (
-                <motion.div
+                <motion.article
                   key={testimonial.id}
                   className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-xl transition-all duration-300"
                   initial={{ opacity: 0, y: 50 }}
@@ -135,7 +135,7 @@ export default function Testimonials({ limit = 3, showViewAllLink = true }) {
                     </h4>
                     <p className="text-purple-400 text-sm">{testimonial.role}</p>
                   </div>
-                </motion.div>
+                </motion.article>
               ))}
             </div>
           ) : (

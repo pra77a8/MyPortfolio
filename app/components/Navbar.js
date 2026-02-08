@@ -40,13 +40,13 @@ export default function Navbar() {
   }
 
   return (
-    <motion.nav 
+    <motion.header 
       className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Primary" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <motion.div
             whileHover={{ scale: 1.1 }}
@@ -89,16 +89,20 @@ export default function Navbar() {
             className="md:hidden text-2xl"
             onClick={() => setIsOpen(!isOpen)}
             whileTap={{ scale: 0.9 }}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
             {isOpen ? <FaTimes className={scrolled ? 'text-gray-700' : 'text-white'} /> : <FaBars className={scrolled ? 'text-gray-700' : 'text-white'} />}
           </motion.button>
         </div>
-      </div>
+      </nav>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
+            id="mobile-menu"
             className="md:hidden bg-white shadow-lg"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
@@ -124,6 +128,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </motion.header>
   )
 }

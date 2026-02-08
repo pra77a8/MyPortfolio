@@ -5,9 +5,9 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 export default function Hero() {
-  const fullPhrase = "Hi, I'm Pranit Adhangle"
   const name = 'Pranit Adhangle'
-  const prefix = "Hi, I'm "
+  const suffix = ' – Portfolio'
+  const fullPhrase = `${name}${suffix}`
   const [typedText, setTypedText] = useState('')
 
   useEffect(() => {
@@ -47,9 +47,11 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span>{typedText.slice(0, Math.min(typedText.length, prefix.length))}</span>
               <span className="bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text">
-                {typedText.length > prefix.length ? typedText.slice(prefix.length) : ''}
+                {typedText.slice(0, Math.min(typedText.length, name.length))}
+              </span>
+              <span>
+                {typedText.length > name.length ? typedText.slice(name.length) : ''}
               </span>
             </motion.h1>
             
@@ -83,6 +85,7 @@ export default function Hero() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-3xl hover:text-yellow-300 transition-all duration-300 hover:scale-125 cursor-pointer"
+                aria-label="GitHub profile"
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -93,6 +96,7 @@ export default function Hero() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-3xl hover:text-yellow-300 transition-all duration-300 hover:scale-125 cursor-pointer"
+                aria-label="LinkedIn profile"
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -101,6 +105,7 @@ export default function Hero() {
               <motion.a 
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=pranitadhangle908@gmail.com" 
                 className="text-3xl hover:text-yellow-300 transition-all duration-300 hover:scale-125 cursor-pointer"
+                aria-label="Email Pranit Adhangle"
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
               >

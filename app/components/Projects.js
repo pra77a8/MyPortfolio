@@ -3,7 +3,6 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import Link from 'next/link'
 
 export default function Projects({ limit = 2, showViewAllLink = true }) {
   const ref = useRef(null)
@@ -53,7 +52,7 @@ export default function Projects({ limit = 2, showViewAllLink = true }) {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {visibleProjects.map((project, idx) => (
-            <motion.div 
+            <motion.article 
               key={idx} 
               className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl overflow-hidden group transition-all duration-300 flex flex-col h-full"
               initial={{ opacity: 0, y: 50 }}
@@ -119,7 +118,7 @@ export default function Projects({ limit = 2, showViewAllLink = true }) {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
