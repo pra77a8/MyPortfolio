@@ -20,7 +20,7 @@ A modern, responsive portfolio website built with Next.js 14 and Tailwind CSS.
 Before you begin, ensure you have the following installed:
 
 ## Installation & Setup
-
+commmit
 1. **Navigate to the project directory:**
    ```bash
    cd Portfolio
