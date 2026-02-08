@@ -1,16 +1,39 @@
 import { NextResponse } from 'next/server'
 import pool from '@/lib/db'
 
+const useDatabase = Boolean(
+  process.env.DB_HOST &&
+  process.env.DB_USER &&
+  process.env.DB_NAME
+)
+
+const getMemoryStore = () => {
+  if (!globalThis.__testimonialsStore) {
+    globalThis.__testimonialsStore = []
+  }
+  return globalThis.__testimonialsStore
+}
+
 // GET - Fetch approved testimonials
 export async function GET() {
   try {
-    const [rows] = await pool.query(
-      'SELECT id, name, role, message, rating, createdAt FROM testimonials WHERE approved = true ORDER BY createdAt DESC'
-    )
-    
+    if (useDatabase) {
+      const [rows] = await pool.query(
+        'SELECT id, name, role, message, rating, createdAt FROM testimonials WHERE approved = true ORDER BY createdAt DESC'
+      )
+
+      return NextResponse.json({
+        success: true,
+        data: rows
+      })
+    }
+
+    const store = getMemoryStore()
+    const approved = store.filter((item) => item.approved)
+
     return NextResponse.json({
       success: true,
-      data: rows
+      data: approved
     })
   } catch (error) {
     console.error('Database error:', error)
@@ -44,17 +67,44 @@ export async function POST(request) {
       }, { status: 400 })
     }
 
-    // Insert into database with approved = false
-    const [result] = await pool.query(
-      'INSERT INTO testimonials (name, role, message, rating, approved) VALUES (?, ?, ?, ?, false)',
-      [name, role, message, ratingNum]
-    )
+    if (useDatabase) {
+      // Insert into database with approved = false
+      const [result] = await pool.query(
+        'INSERT INTO testimonials (name, role, message, rating, approved) VALUES (?, ?, ?, ?, false)',
+        [name, role, message, ratingNum]
+      )
+
+      return NextResponse.json({
+        success: true,
+        message: 'Testimonial submitted successfully! It will be visible after approval.',
+        data: {
+          id: result.insertId,
+          name,
+          role,
+          message,
+          rating: ratingNum,
+          approved: false
+        }
+      }, { status: 201 })
+    }
+
+    const store = getMemoryStore()
+    const id = store.length + 1
+    store.push({
+      id,
+      name,
+      role,
+      message,
+      rating: ratingNum,
+      approved: false,
+      createdAt: new Date().toISOString()
+    })
 
     return NextResponse.json({
       success: true,
       message: 'Testimonial submitted successfully! It will be visible after approval.',
       data: {
-        id: result.insertId,
+        id,
         name,
         role,
         message,
