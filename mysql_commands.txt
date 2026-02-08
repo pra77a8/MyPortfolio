@@ -1,0 +1,34 @@
+﻿-- Connect to MySQL
+mysql -u root -p
+
+-- After entering password, run these commands:
+
+-- Show all databases
+SHOW DATABASES;
+
+-- Use the portfolio database
+USE portfolio;
+
+-- Show all tables in portfolio database
+SHOW TABLES;
+
+-- View testimonials table structure
+DESCRIBE testimonials;
+
+-- View all testimonials (approved and unapproved)
+SELECT * FROM testimonials;
+
+-- View only approved testimonials
+SELECT * FROM testimonials WHERE approved = TRUE;
+
+-- View only pending (unapproved) testimonials
+SELECT * FROM testimonials WHERE approved = FALSE;
+
+-- Count total testimonials
+SELECT COUNT(*) as total FROM testimonials;
+
+-- Count approved vs unapproved
+SELECT approved, COUNT(*) as count FROM testimonials GROUP BY approved;
+
+-- View testimonials with ratings
+SELECT id, name, role, rating, approved FROM testimonials;
