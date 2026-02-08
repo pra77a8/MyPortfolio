@@ -225,7 +225,7 @@ export default function AdminDashboard({ onLogout }) {
 
                   <div className="mb-4">
                     <p className="text-gray-700 leading-relaxed italic">
-                      "{testimonial.message}"
+                      &ldquo;{testimonial.message}&rdquo;
                     </p>
                   </div>
 
