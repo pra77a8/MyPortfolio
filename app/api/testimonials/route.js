@@ -18,14 +18,18 @@ const getMemoryStore = () => {
 export async function GET() {
   try {
     if (useDatabase) {
-      const [rows] = await pool.query(
-        'SELECT id, name, role, message, rating, createdAt FROM testimonials WHERE approved = true ORDER BY createdAt DESC'
-      )
+      try {
+        const [rows] = await pool.query(
+          'SELECT id, name, role, message, rating, createdAt FROM testimonials WHERE approved = true ORDER BY createdAt DESC'
+        )
 
-      return NextResponse.json({
-        success: true,
-        data: rows
-      })
+        return NextResponse.json({
+          success: true,
+          data: rows
+        })
+      } catch (dbError) {
+        console.error('Database error:', dbError)
+      }
     }
 
     const store = getMemoryStore()
@@ -68,24 +72,28 @@ export async function POST(request) {
     }
 
     if (useDatabase) {
-      // Insert into database with approved = false
-      const [result] = await pool.query(
-        'INSERT INTO testimonials (name, role, message, rating, approved) VALUES (?, ?, ?, ?, false)',
-        [name, role, message, ratingNum]
-      )
+      try {
+        // Insert into database with approved = false
+        const [result] = await pool.query(
+          'INSERT INTO testimonials (name, role, message, rating, approved) VALUES (?, ?, ?, ?, false)',
+          [name, role, message, ratingNum]
+        )
 
-      return NextResponse.json({
-        success: true,
-        message: 'Testimonial submitted successfully! It will be visible after approval.',
-        data: {
-          id: result.insertId,
-          name,
-          role,
-          message,
-          rating: ratingNum,
-          approved: false
-        }
-      }, { status: 201 })
+        return NextResponse.json({
+          success: true,
+          message: 'Testimonial submitted successfully! It will be visible after approval.',
+          data: {
+            id: result.insertId,
+            name,
+            role,
+            message,
+            rating: ratingNum,
+            approved: false
+          }
+        }, { status: 201 })
+      } catch (dbError) {
+        console.error('Database error:', dbError)
+      }
     }
 
     const store = getMemoryStore()
