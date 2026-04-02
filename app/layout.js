@@ -34,10 +34,10 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://pranitadhangle.github.io/pranit.jpg',
+        url: 'https://pranitadhangle.github.io/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Pranit Adhangle'
+        alt: 'Pranit Adhangle Portfolio Homepage Preview'
       }
     ]
   },
@@ -46,7 +46,7 @@ export const metadata = {
     title: 'Pranit Adhangle | Portfolio',
     description:
       'Pranit Adhangle portfolio showcasing full stack development, data science projects, education, and contact details for collaboration.',
-    images: ['https://pranitadhangle.github.io/pranit.jpg']
+    images: ['https://pranitadhangle.github.io/twitter-image']
   }
 }
 
