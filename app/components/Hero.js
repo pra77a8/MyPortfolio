@@ -2,27 +2,8 @@
 import Image from 'next/image'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
 
 export default function Hero() {
-  const name = 'Pranit Adhangle'
-  const prefix = "Hi, I'm "
-  const fullPhrase = `${prefix}${name}`
-  const [typedText, setTypedText] = useState('')
-
-  useEffect(() => {
-    let index = 0
-    const interval = setInterval(() => {
-      index += 1
-      setTypedText(fullPhrase.slice(0, index))
-      if (index >= fullPhrase.length) {
-        clearInterval(interval)
-      }
-    }, 90)
-
-    return () => clearInterval(interval)
-  }, [fullPhrase])
-
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0b1120] via-[#0f172a] to-[#1e293b] text-white relative overflow-hidden">
       {/* Animated glow blobs in background */}
@@ -34,10 +15,33 @@ export default function Hero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Profile Image */}
+          <motion.div 
+            className="flex justify-center md:justify-start"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <motion.div 
+              className="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-8 border-white shadow-2xl"
+              whileHover={{ scale: 1.05, rotate: 5 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Image
+                src="/pranit.jpg"
+                alt="Pranit Adhangle"
+                fill
+                sizes="(max-width: 768px) 256px, 384px"
+                className="object-cover"
+                priority
+              />
+            </motion.div>
+          </motion.div>
+
           {/* Text Content */}
           <motion.div 
             className="text-center md:text-left"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
@@ -47,24 +51,20 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="sr-only">Pranit Adhangle – Portfolio</span>
-              <span aria-hidden="true">
-                <span>{typedText.slice(0, Math.min(typedText.length, prefix.length))}</span>
-                <span className="bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text">
-                  {typedText.length > prefix.length ? typedText.slice(prefix.length) : ''}
-                </span>
+              <span className="bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text">
+                Pranit Adhangle
               </span>
             </motion.h1>
-            
+
             <motion.h2 
               className="text-2xl md:text-3xl mb-6 text-gray-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Full Stack Developer & IBM Certified Data Scientist
+              Full Stack Developer & Data Scientist
             </motion.h2>
-            
+
             <motion.p 
               className="text-lg md:text-xl mb-8 text-gray-300"
               initial={{ opacity: 0, y: 20 }}
@@ -73,7 +73,7 @@ export default function Hero() {
             >
               Passionate about building innovative solutions and turning data into insights.
             </motion.p>
-            
+
             {/* Social Links */}
             <motion.div 
               className="flex justify-center md:justify-start space-x-6 mb-8"
@@ -127,7 +127,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(139,92,246,0.3)" }}
                 whileTap={{ scale: 0.95 }}
               >
-                View My Work
+                View Projects
               </motion.a>
               <motion.a 
                 href="/pranit%20resume.pdf" 
@@ -138,29 +138,14 @@ export default function Hero() {
               >
                 Download Resume
               </motion.a>
-            </motion.div>
-          </motion.div>
-
-          {/* Profile Image */}
-          <motion.div 
-            className="flex justify-center md:justify-start"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <motion.div 
-              className="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-8 border-white shadow-2xl"
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Image
-                src="/pranit.jpg"
-                alt="Pranit Adhangle"
-                fill
-                sizes="(max-width: 768px) 256px, 384px"
-                className="object-cover"
-                priority
-              />
+              <motion.a 
+                href="#contact"
+                className="px-8 py-3 border-2 border-white/30 bg-white/5 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/10 transition-all"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contact Me
+              </motion.a>
             </motion.div>
           </motion.div>
         </div>
