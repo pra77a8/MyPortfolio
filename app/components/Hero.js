@@ -36,7 +36,7 @@ export default function Hero() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <motion.div
-            className="text-center md:text-left"
+            className="order-2 md:order-1 text-center md:text-left"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -143,7 +143,7 @@ export default function Hero() {
 
           {/* Profile Image */}
           <motion.div 
-            className="flex justify-center md:justify-start"
+            className="order-1 md:order-2 flex justify-center md:justify-start"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
