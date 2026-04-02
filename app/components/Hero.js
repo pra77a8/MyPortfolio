@@ -62,7 +62,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Full Stack Developer & Data Scientist
+              Full Stack Developer & IBM Certified Data Scientist
             </motion.h2>
 
             <motion.p 
