@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  metadataBase: new URL('https://pranitadhangle.github.io'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://pranitadhangle.github.io'),
   title: 'Pranit Adhangle | Portfolio',
   description:
     'Pranit Adhangle portfolio showcasing full stack development, data science projects, education, and contact details for collaboration.',
@@ -23,18 +23,18 @@ export const metadata = {
     follow: true
   },
   alternates: {
-    canonical: 'https://pranitadhangle.github.io/'
+    canonical: '/'
   },
   openGraph: {
     title: 'Pranit Adhangle | Portfolio',
     description:
       'Pranit Adhangle portfolio showcasing full stack development, data science projects, education, and contact details for collaboration.',
-    url: 'https://pranitadhangle.github.io/',
+    url: '/',
     siteName: 'Pranit Adhangle Portfolio',
     type: 'website',
     images: [
       {
-        url: 'https://pranitadhangle.github.io/opengraph-image',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'Pranit Adhangle Portfolio Homepage Preview'
@@ -46,7 +46,7 @@ export const metadata = {
     title: 'Pranit Adhangle | Portfolio',
     description:
       'Pranit Adhangle portfolio showcasing full stack development, data science projects, education, and contact details for collaboration.',
-    images: ['https://pranitadhangle.github.io/twitter-image']
+    images: ['/twitter-image']
   }
 }
 
