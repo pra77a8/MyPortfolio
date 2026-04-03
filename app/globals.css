@@ -190,3 +190,9 @@ body {
   .mobile-reveal > *:nth-child(9) { animation-delay: 0.4s; }
   .mobile-reveal > *:nth-child(10) { animation-delay: 0.45s; }
 }
+
+/* 
+  Animation utilities below are intentionally global so components
+  can opt-in via className without duplicating keyframes.
+  (Documentation-only comment; no visual/runtime impact.)
+*/
