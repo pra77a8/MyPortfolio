@@ -10,6 +10,25 @@ export default function Achievements() {
   const achievements = [
     {
       icon: <FaTrophy className="text-5xl text-yellow-400" />,
+      title: 'Hac4Innovation Top 3',
+      description: 'Earned a Top 3 finish at Hac4Innovation for delivering an innovative and impactful solution.',
+      date: '2025',
+      highlight: true
+    },
+    {
+      icon: <FaStar className="text-5xl text-pink-400" />,
+      title: 'Girl Script Summer of Code Contributor',
+      description: 'Contributed to open-source projects as a Girl Script Summer of Code participant, collaborating with the developer community.',
+      date: '2025'
+    },
+    {
+      icon: <FaCertificate className="text-5xl text-blue-400" />,
+      title: 'ECSOC Contributor',
+      description: 'Contributed to ECSOC by participating in open-source development and collaborative project work.',
+      date: '2025'
+    },
+    {
+      icon: <FaTrophy className="text-5xl text-yellow-400" />,
       title: 'SIH Finalist',
       description: 'Qualified as a finalist in the prestigious Smart India Hackathon, competing among thousands of teams nationwide.',
       date: '2025',
