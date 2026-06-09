@@ -37,7 +37,7 @@ export default function Skills() {
         >
           <span className="sr-only">Skills</span>
           <span className="bg-gradient-to-r from-purple-600 to-blue-500 text-transparent bg-clip-text">
-            Tech Stack
+            Techaaa Stack
           </span>
         </motion.h2>
 
