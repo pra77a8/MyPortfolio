@@ -53,7 +53,7 @@ export default function Navbar() {
             whileTap={{ scale: 0.95 }}
           >
             <Link href="#home" className="text-2xl font-bold gradient-text">
-              Pranit Adhangle
+              Pranita Adhangle
             </Link>
           </motion.div>
 
