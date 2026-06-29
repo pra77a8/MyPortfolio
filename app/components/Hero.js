@@ -143,7 +143,7 @@ export default function Hero() {
 
           {/* Profile Image */}
           <motion.div 
-            className="order-1 md:order-2 flex justify-center md:justify-start"
+            className="order-1 md:order-2 flex justify-center md:justify-end pr-12"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
