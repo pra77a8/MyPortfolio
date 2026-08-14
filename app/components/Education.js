@@ -14,10 +14,13 @@ export default function Education() {
       institution: 'K. K. Wagh Institute of Engineering Education & Research',
       period: '2025 – 2028',
       highlights: [
-        'Current SGPA: 7.73 (till Semester 3)',
+        'Current CGPA: 8.1 (till Semester 4)',
         'SIH Finalist',
+        'Hack4Innovation Top 3',
+        'Won 1st prize in DSA Mini Project Competition',
         'IBM Certified in Data Science',
-        'Actively participating in hackathons'
+        'Actively participating in hackathons',
+        'Exploring Open Source contributions and collaborative projects'
       ],
       icon: <FaGraduationCap className="text-5xl text-purple-400" />
     },
